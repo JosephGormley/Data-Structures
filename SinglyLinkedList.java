@@ -20,8 +20,22 @@ public class SinglyLinkedList<T extends Comparable<T>> {
 	/* Inserts an item to the front of the list */
 	public void insertToFront(T data){
 
-		// Create Node for data and increment size. 
+		// Create Node for data. 
 		front = new Node<T>(data, front);
+
+	}
+
+	/* Inserts an item to the end of the list */
+	public void insertToEnd(T data){
+
+		// Iterate to end of list.	
+		Node<T> endNode = front;
+		while(endNode.next != null){
+			endNode = endNode.next;
+		}
+
+		// Create Node for data and add to the list.
+		endNode.next = new Node<T>(data, null);
 
 	}
 

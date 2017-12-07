@@ -14,13 +14,16 @@ public class Driver {
 		sll.insertToFront("item1");
 		sll.insertToFront("item2");
 		sll.insertToFront("item3");
-		
+		sll.insertToEnd("item0");
 		sll.printList();
+
+		System.out.println();
+		
 		sll.delete("item3");
 		sll.printList();
 
 		System.out.println("\nTest complete!\n");
 
 	}
-	
+
 }

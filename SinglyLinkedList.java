@@ -1,47 +1,102 @@
 /* Author: Joseph Gormley 
    Date: 12/6/17 */
-public class SinglyLinkedList<T> {
+public class SinglyLinkedList<T extends Comparable<T>> {
 
-	/* Class members */
-	Node<T> front;
-	int size;
+	/*************
+	 * MEMBER(S) *
+     *************/
+	Node<T> front; // Will represent first node in list. 
 
-	/* Default constructor is fine for this class */
 
-	/* Inserts an item to the front of a Linked List 
-	   NOTE: This returns a new front for the list */
-	public Node<T> insertToFront(T data){
+	/******************
+	 * CONSTRUCTOR(S) *
+     ******************/
+	// Default constructor is fine for this class.
 
-		// Create Node for data
-		Node<T> n = new Node<T>(data, front);
 
-		return n;
+    /*************
+	 * METHOD(S) *
+     *************/
+	/* Inserts an item to the front of the list */
+	public void insertToFront(T data){
+
+		// Create Node for data and increment size. 
+		front = new Node<T>(data, front);
 
 	}
 
-	/* Prints out the Linked List */
+	/* Deletes first occurrence of data in list */
+	public void delete(T data){
+
+
+		// Check to see if first item is first occurrence of data. 
+		if(front.data.compareTo(data) == 0){
+			if(front.next == null){
+				// Delete only item in list. 
+				front = null;
+				return; 
+			}
+
+			front = front.next; 
+			return;
+		}
+
+		Node<T> prev = front;
+		// Search remaining of list for first occurrence of data.
+		for(Node<T> toDelete = front.next; toDelete != null; toDelete = toDelete.next){
+			if(toDelete.data.compareTo(data) == 0){
+				// Delete this node.
+				prev.next = prev.next.next;
+				return;
+			}
+
+			prev = toDelete;
+
+		}
+
+	}
+
+	//TODO 
+	/* Deletes ALL occurences of data in list */
+	public void deleteAll(T data){
+
+
+	}
+
+
+	/********************
+	 * HELPER METHOD(S) *
+     ********************/
+	/* Prints out the list */
 	public void printList(){
 
 		// Iterate list
-		for(Node<T> tmp = front; tmp != null; tmp = tmp.next){
-			System.out.println(tmp.data);
+		for(Node<T> toPrint = front; toPrint != null; toPrint = toPrint.next){
+			System.out.println(toPrint.data);
 		}
 
 		return;
 	}
 
 }
+ 
 
 /* This class will store data and a pointer to the next data */
 class Node<T> {
 
-	// Class members
+	/*******************
+	 * CLASS MEMBER(S) *
+     *******************/
 	T data; 
 	Node<T> next; 
 
-	// Constructor
+
+	/******************
+	 * CONSTRUCTOR(S) *
+     ******************/
 	public Node(T data, Node<T> next){
 		this.data = data;
 		this.next = next;
 	}
+
 }

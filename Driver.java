@@ -12,14 +12,18 @@ public class Driver {
 
 
 		sll.insertToFront("item1");
+                sll.insertToFront("Hey");
 		sll.insertToFront("item2");
 		sll.insertToFront("item3");
 		sll.insertToEnd("item0");
+                sll.insertToEnd("item2");
+                sll.insertToFront("Hey");
 		sll.printList();
 
 		System.out.println();
 		
-		sll.delete("item3");
+		sll.removeDups();
+                System.out.println();
 		sll.printList();
 
 		System.out.println("\nTest complete!\n");

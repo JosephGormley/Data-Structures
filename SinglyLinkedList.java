@@ -1,5 +1,8 @@
 /* Author: Joseph Gormley 
    Date: 12/6/17 */
+
+import java.util.HashSet;
+
 public class SinglyLinkedList<T extends Comparable<T>> {
 
   /*************
@@ -69,11 +72,22 @@ public class SinglyLinkedList<T extends Comparable<T>> {
 
    }
         
-   // TODO  
-   /* Deletes ALL occurences of data in list */ 
-   public void deleteAll(T data){
-
-
+   /* Deletes ALL occurences of data in list. */
+   // #1. Cracking the Coding Interview  
+   public void removeDups(){
+        
+      HashSet<T> hs = new HashSet<T>(); // Used to store list for efficiency. 
+ 
+      Node<T> prev = null;
+      for(Node<T> curr = front; curr != null; curr = curr.next){
+         if(!hs.contains(curr.data)){ // Add to HashSet. 
+            hs.add(curr.data);
+         }else{ // This data is a duplicate and should be deleted.
+            prev.next = prev.next.next;
+         }
+         prev = curr;     
+      }  
+      
    }
 
 

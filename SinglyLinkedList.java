@@ -86,9 +86,17 @@ public class SinglyLinkedList<T extends Comparable<T>> {
             prev.next = prev.next.next;
          }
          prev = curr;     
-      }  
+      }
+
+    }
+
+    /* Return kth to last item in the list. */
+    // #2. Cracking the Coding Interview
+    public T returnKthToLast(int k){  
       
-   }
+
+       return null;
+    }
 
 
   /********************

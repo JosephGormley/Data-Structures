@@ -21,8 +21,7 @@ public class Driver {
 		sll.printList();
 
 		System.out.println();
-		
-		sll.removeDups();
+	
                 System.out.println();
 		sll.printList();
 

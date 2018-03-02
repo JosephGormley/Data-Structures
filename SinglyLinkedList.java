@@ -94,6 +94,18 @@ public class SinglyLinkedList<T extends Comparable<T>> {
     // #2. Cracking the Coding Interview
     public T returnKthToLast(int k){  
       
+       listSize = 0;
+       itemNumber = -1;
+
+       // Get size of linked list. 
+       for(Node<T> curr = head; curr != null; curr = curr.next){
+          listSize++;  
+       }
+ 
+       System.out.println("List Size: " + listSize);
+ 
+       // Recursive deletion.
+       head = jumpToNext(head, listSize - (k - 1));
 
        return null;
     }
@@ -112,6 +124,31 @@ public class SinglyLinkedList<T extends Comparable<T>> {
 
       return;
    }
+
+
+   /* Recursive call to delete target item in list */
+   public Node<T> deleteIndex(Node<T> current, int numberOfItem){
+      
+      System.out.println("Recursively visiting: " + node.data + " which is numbered " + numberOfItem);
+
+      // Edge Case 
+      if(numberOfItem == 1){
+         return head.next;
+      }
+
+      // Base Case 
+      if(numberOfItem == numberOfItems - 1){
+         current = current.next;
+         return pos;
+      }
+
+      // Recursive Call
+      deleteIndex(current.next, numberOfItem--);
+     
+     // Head is unchanged. 
+     return head;
+   }
+
 
 // End of class. 
 }

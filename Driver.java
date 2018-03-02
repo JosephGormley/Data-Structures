@@ -4,14 +4,23 @@ public class Driver {
 	
 	public static void main(String[] args){
 
-		System.out.println("\nSingly LinkedList Test");
+		//System.out.println("\nSingly LinkedList Test");
+                System.out.println("Binary Search Tree Test");
 		System.out.println("----------------------\n");
 
 		// Create list of strings.
-		SinglyLinkedList<String> sll = new SinglyLinkedList<String>();
+		//SinglyLinkedList<String> sll = new SinglyLinkedList<String>();
+
+                // Create a Binary Search tree
+                BinarySearchTree<Integer> bst = new BinarySearchTree<Integer>();
+
+                // Add values to the bst.
+                bst.addData(4);
+                 
 
 
-		sll.insertToFront("item1");
+
+		/*sll.insertToFront("item1");
                 sll.insertToFront("Hey");
 		sll.insertToFront("item2");
 		sll.insertToFront("item3");
@@ -19,11 +28,10 @@ public class Driver {
                 sll.insertToEnd("item2");
                 sll.insertToFront("Hey");
 		sll.printList();
-
 		System.out.println();
-	
                 System.out.println();
-		sll.printList();
+		sll.printList(); */
+
 
 		System.out.println("\nTest complete!\n");
 

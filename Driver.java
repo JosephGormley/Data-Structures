@@ -12,18 +12,19 @@ public class Driver {
 		//SinglyLinkedList<String> sll = new SinglyLinkedList<String>();
 
                 // Create a Binary Search tree
-                BinarySearchTree<Integer> bst = new BinarySearchTree<Integer>();
+                BinarySearchTree<String> bst = new BinarySearchTree<String>();
 
                 // Add values to the bst.
-                bst.addData(7);
-                bst.addData(3);
-                bst.addData(5);
-                bst.addData(1);
-                bst.addData(4);
-                bst.addData(6);
-                bst.addData(10);
-                bst.addData(9);
-                bst.printInOrder();;                 
+                bst.addData("F");
+                bst.addData("B");
+                bst.addData("A");
+                bst.addData("D");
+                bst.addData("C");
+                bst.addData("E");
+                bst.addData("G");
+                bst.addData("I");
+                bst.addData("H");
+                bst.printPostOrder();                 
 
 
 

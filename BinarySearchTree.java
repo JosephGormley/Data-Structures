@@ -61,12 +61,32 @@ public class BinarySearchTree<T extends Comparable<T>> {
    /*******************
    * HELPER METHOD(S) *
    *******************/
-   /* Prints out tree in order */
+   /* Prints out tree in order. */
    public void printInOrder(){
       inOrderTraverse(root);
       return;
    }
 
+   /* Prints out tree post oreder. */
+   public void printPostOrder(){
+      postOrderTraverse(root);
+      return;
+   }
+  
+   /* Recursive call for post order. */
+   public void postOrderTraverse(Node<T> current){
+
+      if(current == null){ // Base case.         
+         return;
+      }
+
+      // Recursive call.
+      postOrderTraverse(current.leftChild);
+      postOrderTraverse(current.rightChild);
+      System.out.println(current.data);
+   }
+     
+   /* Recursive call for in order. */
    public void inOrderTraverse(Node<T> current){
       
      if(current.leftChild != null){ // Left.

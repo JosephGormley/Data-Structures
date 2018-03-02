@@ -123,6 +123,14 @@ public class SinglyLinkedList<T extends Comparable<T>> {
       return;
    }
 
+   /* Partiton node around T data. */ 
+   // #4. Cracking the Coding Interview
+   public node<T> partition(T data){
+
+
+      return null;
+   }
+
 
   /********************
    * HELPER METHOD(S) *
@@ -155,7 +163,6 @@ public class SinglyLinkedList<T extends Comparable<T>> {
       // Recursive Call
      return returnIndex(current.next, --numberOfItem);
    }
-
 
 // End of class. 
 }

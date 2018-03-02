@@ -19,11 +19,14 @@ public class BinarySearchTree<T extends Comparable<T>> {
    ************/
    public void addData(T data){
       
-      // Edge case. 
-
-
       // Create node for data.
       Node<T> n = new Node<T>(data, null, null);
+
+      // Edge case. 
+      if(root == null){
+         root = n;
+         return;
+      }
       
       // Traverse the tree to add data.
       Node<T> curr = root;
@@ -55,15 +58,36 @@ public class BinarySearchTree<T extends Comparable<T>> {
       } // End of while loop. 
    } // End of method.
 
-   ********************
+   /*******************
    * HELPER METHOD(S) *
-   ********************
-   public void inOrderTraverse(){
+   *******************/
+   /* Prints out tree in order */
+   public void printInOrder(){
+      inOrderTraverse(root);
+      return;
+   }
 
+   public void inOrderTraverse(Node<T> current){
+      
+     if(current.leftChild != null){ // Left.
 
+        inOrderTraverse(current.leftChild);
 
+     }
 
+     System.out.println(current.data); // Visit.
+  
+     if(current.rightChild != null){ // Right.
 
+        inOrderTraverse(current.rightChild);
+      
+     }    
+
+     if(current.leftChild != null && current.rightChild != null){
+     
+        return;
+
+     }  
 
    } // End of method. 
    

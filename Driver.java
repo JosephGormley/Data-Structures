@@ -15,8 +15,15 @@ public class Driver {
                 BinarySearchTree<Integer> bst = new BinarySearchTree<Integer>();
 
                 // Add values to the bst.
+                bst.addData(7);
+                bst.addData(3);
+                bst.addData(5);
+                bst.addData(1);
                 bst.addData(4);
-                 
+                bst.addData(6);
+                bst.addData(10);
+                bst.addData(9);
+                bst.printInOrder();;                 
 
 
 

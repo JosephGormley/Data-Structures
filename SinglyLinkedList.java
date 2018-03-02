@@ -105,6 +105,16 @@ public class SinglyLinkedList<T extends Comparable<T>> {
        return returnIndex(front, listSize - (k - 1));
     }
 
+    /* Delete a given note (must be a missle node) given only a pointer to it */
+    // #3. Cracking the Coding Interview
+    public void  deleteMiddleNode(Node<T> toDelete){
+
+
+
+ 
+      return;
+   }
+
 
   /********************
    * HELPER METHOD(S) *

@@ -109,8 +109,16 @@ public class SinglyLinkedList<T extends Comparable<T>> {
     // #3. Cracking the Coding Interview
     public void  deleteMiddleNode(Node<T> toDelete){
 
+       // Do not have to worry about edeg cases due to nature of the method. 
+  
+       // Collect data from node in front;
+       T nodeData = toDelete.next.data;
 
+       // Place data in node given.
+       toDelete.data = nodeData;
 
+       // Change pointer. 
+       toDelete.next = toDelete.next.next; 
  
       return;
    }

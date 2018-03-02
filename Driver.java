@@ -9,12 +9,13 @@ public class Driver {
 		System.out.println("----------------------\n");
 
 		// Create list of strings.
-		//SinglyLinkedList<String> sll = new SinglyLinkedList<String>();
+		SinglyLinkedList<String> sll = new SinglyLinkedList<String>();
 
                 // Create a Binary Search tree
-                BinarySearchTree<String> bst = new BinarySearchTree<String>();
+                //BinarySearchTree<String> bst = new BinarySearchTree<String>();
 
-                // Add values to the bst.
+                
+                /*
                 bst.addData("F");
                 bst.addData("B");
                 bst.addData("A");
@@ -24,11 +25,11 @@ public class Driver {
                 bst.addData("G");
                 bst.addData("I");
                 bst.addData("H");
-                bst.printPostOrder();                 
+                bst.printInOrder();*/
+                 
 
 
-
-		/*sll.insertToFront("item1");
+		sll.insertToFront("item1");
                 sll.insertToFront("Hey");
 		sll.insertToFront("item2");
 		sll.insertToFront("item3");
@@ -36,9 +37,14 @@ public class Driver {
                 sll.insertToEnd("item2");
                 sll.insertToFront("Hey");
 		sll.printList();
-		System.out.println();
+
                 System.out.println();
-		sll.printList(); */
+ 
+                sll.deleteMiddleNode(sll.front.next.next.next); 
+
+                sll.printList();
+
+                System.out.println();
 
 
 		System.out.println("\nTest complete!\n");

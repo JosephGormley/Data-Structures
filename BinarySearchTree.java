@@ -66,13 +66,32 @@ public class BinarySearchTree<T extends Comparable<T>> {
       inOrderTraverse(root);
       return;
    }
-
-   /* Prints out tree post oreder. */
+   
+   /* Prints out tree post oreder */
    public void printPostOrder(){
       postOrderTraverse(root);
       return;
    }
-  
+   
+   /* Prints out tree pre order. */
+   public void printPreOrder(){
+      preOrderTraversal(root);
+      return;
+   }
+
+   /* Recursive call for pre order. */
+   public void preOrderTraversal(Node<T> current){
+   
+      if(current == null){ // Base case.
+         return;
+      }
+
+      // Recursive calls.
+      System.out.println(current.data);
+      preOrderTraversal(current.leftChild);
+      preOrderTraversal(current.rightChild);
+   }
+
    /* Recursive call for post order. */
    public void postOrderTraverse(Node<T> current){
 

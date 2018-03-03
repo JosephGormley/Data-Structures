@@ -9,13 +9,30 @@ public class Driver {
 		System.out.println("----------------------\n");
 
 		// Create list of strings.
-		SinglyLinkedList<String> sll = new SinglyLinkedList<String>();
+	   	//SinglyLinkedList<String> sll = new SinglyLinkedList<String>();
 
                 // Create a Binary Search tree
                 //BinarySearchTree<String> bst = new BinarySearchTree<String>();
 
                 
-                /*
+                // Create a stack.
+                Stack<Integer> s = new Stack<Integer>();
+                
+                // STACK
+                s.push(9);
+                s.push(3);                 
+                s.push(1);
+        
+                s.printStack();
+                              
+                System.out.println(s.pop());
+                System.out.println(s.pop());
+                System.out.println(s.pop());
+                System.out.println(s.pop());
+
+                //s.printStack();
+
+                /* BINARY SEARCH TREE
                 bst.addData("F");
                 bst.addData("B");
                 bst.addData("A");
@@ -25,10 +42,11 @@ public class Driver {
                 bst.addData("G");
                 bst.addData("I");
                 bst.addData("H");
-                bst.printInOrder();*/
+                bst.printInOrder(); */
                  
+                
 
-
+                /* LINKED LIST
 		sll.insertToFront("item1");
                 sll.insertToFront("Hey");
 		sll.insertToFront("item2");
@@ -36,15 +54,7 @@ public class Driver {
 		sll.insertToEnd("item0");
                 sll.insertToEnd("item2");
                 sll.insertToFront("Hey");
-		sll.printList();
-
-                System.out.println();
- 
-                sll.deleteMiddleNode(sll.front.next.next.next); 
-
-                sll.printList();
-
-                System.out.println();
+		sll.printList(); */
 
 
 		System.out.println("\nTest complete!\n");

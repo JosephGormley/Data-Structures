@@ -65,6 +65,12 @@ public class Stack<T extends Comparable<T>> {
       return top.min;
    
    }
+
+
+   public Node<T> peek(){
+  
+      return top;
+   }
       
   /**********************
    * HELPER FUNCTION(S) *

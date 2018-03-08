@@ -2,23 +2,47 @@
 public class Graph {
    
    // Fields. 
-   char[][] nodes;
+   int[][] nodes;
+   int vertices = 0; 
 
    // Constructor.
-   public Graph(int size){
-      nodes = new char[size][size];
+   public Graph(int vertices){
+      nodes = new int[vertices][vertices];
+      this.vertices = vertices; 
    }
+
+   // Methods.
+   public void addEdge(int vertex1, int vertex2){
+      
+      // Update matrix.
+      nodes[vertex1][vertex2] = 1;
+      
+   }   
    
+
+
+   // Helper functions.
+   public void printGraph(){
+
+      // Traverse 2d array.
+      for(int i = 0; i < nodes.length; i++){
+        for(int j = 0; j < nodes[i].length; j++){
+           System.out.print(nodes[i][j] + " ");
+        }
+        System.out.println();
+      }
+
+   }
 }
 
 class Node {
 
    // Fields.
-   char data;
+   int data;
    Node[] children;
 
    // Constructor.
-   public Node(char data){
+   public Node(int data){
 
       this.data = data;
 

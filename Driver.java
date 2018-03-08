@@ -4,21 +4,16 @@ public class Driver {
 	
 	public static void main(String[] args){
 
-                System.out.println("Graph Test");
-		System.out.println("----------------------\n");
+                System.out.println("Queue Test");
+		System.out.println("----------\n");
 
-		// Create graph.
-                Graph g = new Graph(6);
-                g.addEdge(0, 1);
-                g.addEdge(0, 2);
-                g.addEdge(0, 3);
-                g.addEdge(4, 1);
-                g.addEdge(5, 3);
-                g.addEdge(5, 4);
-                g.printGraph();
-                
-
-
+		// Create queue.
+                Queue<Integer> q = new Queue<Integer>();
+                q.enQueue(3);
+                q.enQueue(5);
+                q.enQueue(1);
+                q.deQueue();
+                q.printQueue();
 		System.out.println("\nTest complete!\n");
 
 	}

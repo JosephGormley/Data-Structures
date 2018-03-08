@@ -41,26 +41,36 @@ public class Graph {
  
       Stack<Integer> s = new Stack<Integer>();
       boolean[] visited = new boolean[vertices];
-      visited[vertex] = true;
       
       s.push(vertex);
+      visited[vertex] = true;
       int v = s.peek().data;
+
+      System.out.print(v);
 
       while(!s.isEmpty()){
          
-         for(int i = 0; i < nodes[v].length; i++){
-            System.out.println(s.peek().data);
+         int i = 0;
+         while(i < vertices){
             if(nodes[v][i] == 1 && visited[i] == false){
                 s.push(i);
                 visited[i] = true;
-                v = s.peek().data;
+                v = s.peek().data; 
+
+                // Print out new vertex and start iteration over.
+                System.out.print(v);
                 i = 0;
+            }else{
+               i++;
             }
          }
 
          s.pop();
-         v = s.peek().data;
+         if(s.peek() != null){
+            v = s.peek().data;
+         }
       }
+      System.out.println();
    }
 
    // Helper functions.

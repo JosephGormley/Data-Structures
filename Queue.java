@@ -45,6 +45,10 @@ public class Queue<T> {
       return ret;
    }
 
+   public boolean isEmpty(){
+
+      return front == null;
+   }
   /********************
    * HELPER METHOD(S) *
    ********************/

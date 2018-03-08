@@ -4,57 +4,19 @@ public class Driver {
 	
 	public static void main(String[] args){
 
-		//System.out.println("\nSingly LinkedList Test");
-                System.out.println("Binary Search Tree Test");
+                System.out.println("Graph Test");
 		System.out.println("----------------------\n");
 
-		// Create list of strings.
-	   	//SinglyLinkedList<String> sll = new SinglyLinkedList<String>();
-
-                // Create a Binary Search tree
-                //BinarySearchTree<String> bst = new BinarySearchTree<String>();
-
+		// Create graph.
+                Graph g = new Graph(6);
+                g.addEdge(0, 1);
+                g.addEdge(0, 2);
+                g.addEdge(0, 3);
+                g.addEdge(4, 1);
+                g.addEdge(5, 3);
+                g.addEdge(5, 4);
+                g.printGraph();
                 
-                // Create a stack.
-                Stack<Integer> s = new Stack<Integer>();
-                
-                // STACK
-                s.push(9);
-                s.push(3);                 
-                s.push(1);
-        
-                s.printStack();
-                              
-                System.out.println(s.pop());
-                System.out.println(s.pop());
-                System.out.println(s.pop());
-                System.out.println(s.pop());
-
-                //s.printStack();
-
-                /* BINARY SEARCH TREE
-                bst.addData("F");
-                bst.addData("B");
-                bst.addData("A");
-                bst.addData("D");
-                bst.addData("C");
-                bst.addData("E");
-                bst.addData("G");
-                bst.addData("I");
-                bst.addData("H");
-                bst.printInOrder(); */
-                 
-                
-
-                /* LINKED LIST
-		sll.insertToFront("item1");
-                sll.insertToFront("Hey");
-		sll.insertToFront("item2");
-		sll.insertToFront("item3");
-		sll.insertToEnd("item0");
-                sll.insertToEnd("item2");
-                sll.insertToFront("Hey");
-		sll.printList(); */
 
 
 		System.out.println("\nTest complete!\n");

@@ -31,9 +31,36 @@ public class Graph {
    // Closest route between two nodes. This question is from CTCI.
    public boolean routeBetweenVertices(int vertex1, int vertex2){
 
-
+  
 
       return false;
+   }
+   
+   // DFS.
+   public void dfs(int vertex){
+ 
+      Stack<Integer> s = new Stack<Integer>();
+      boolean[] visited = new boolean[vertices];
+      visited[vertex] = true;
+      
+      s.push(vertex);
+      int v = s.peek().data;
+
+      while(!s.isEmpty()){
+         
+         for(int i = 0; i < nodes[v].length; i++){
+            System.out.println(s.peek().data);
+            if(nodes[v][i] == 1 && visited[i] == false){
+                s.push(i);
+                visited[i] = true;
+                v = s.peek().data;
+                i = 0;
+            }
+         }
+
+         s.pop();
+         v = s.peek().data;
+      }
    }
 
    // Helper functions.
@@ -48,20 +75,5 @@ public class Graph {
       }
 
    }
-}
-
-class Node {
-
-   // Fields.
-   int data;
-   Node[] children;
-
-   // Constructor.
-   public Node(int data){
-
-      this.data = data;
-
-   }
-
 }
 

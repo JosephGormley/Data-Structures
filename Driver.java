@@ -8,12 +8,16 @@ public class Driver {
 		System.out.println("----------\n");
 
 		// Create queue.
-                Queue<Integer> q = new Queue<Integer>();
-                q.enQueue(3);
-                q.enQueue(5);
-                q.enQueue(1);
-                q.deQueue();
-                q.printQueue();
+                Graph g = new Graph(6);
+                g.addEdge(0,1);
+                g.addEdge(0,2);
+                g.addEdge(0,3);
+                g.addEdge(1,3);
+                g.addEdge(1,5);
+                g.addEdge(4,1);
+                g.addEdge(5,3);
+                g.addEdge(5,4);
+                g.bfs(0);
 		System.out.println("\nTest complete!\n");
 
 	}

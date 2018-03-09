@@ -71,15 +71,39 @@ public class Graph {
          }
       }
       System.out.println();
+      return;
    }
 
+   // BFS.
    public void bfs(int vertex){
 
+      Queue<Integer> q = new Queue<Integer>();
+      boolean visited[] = new boolean[vertices];
+      int v = vertex; // Current vector.
+      int i = 0;      // Used for iterating v's neighbors. 
+    
+      q.enQueue(v);
+      visited[v] = true;
+      System.out.print(v);
 
-
-
-
-   }
+      while(!q.isEmpty()){
+         i = 0;
+         v = q.deQueue().data; 
+         while(i < vertices){
+            if(nodes[v][i] == 1 && visited[i] == false){
+               q.enQueue(i);
+               visited[i] = true; 
+               System.out.print(i);
+            }else{
+               i++;
+            }
+         }
+         
+      } 
+      
+      System.out.println();
+      return;
+   } // End of method
 
    // Helper functions.
    public void printGraph(){

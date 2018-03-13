@@ -5,21 +5,21 @@ import java.util.HashSet;
 
 public class SinglyLinkedList<T extends Comparable<T>> {
 
-  /*************
-   * MEMBER(S) *
-   *************/ 
+  /*******************
+   * CLASS MEMBER(S) *
+   *******************/ 
    Node<T> front; // Will represent first node in list. 
 
 
-  /******************
-   * CONSTRUCTOR(S) *
-   ******************/
+  /************************
+   * CLASS CONSTRUCTOR(S) *
+   ************************/
    // Default constructor is fine for this class.
 
 
-  /*************
-   * METHOD(S) *
-   *************/
+  /*******************
+   * CLASS METHOD(S) *
+   *******************/
    /* Inserts an item to the front of the list */
    public void insertToFront(T data){
 
@@ -178,9 +178,9 @@ class Node<T> {
    Node<T> next; 
 
 
-  /******************
-   * CONSTRUCTOR(S) *
-   ******************/
+  /************************
+   * CLASS CONSTRUCTOR(S) *
+   ************************/
    public Node(T data, Node<T> next){
       this.data = data;
       this.next = next;

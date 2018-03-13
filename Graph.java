@@ -1,18 +1,27 @@
 // This is a graph represented as a Matrix. 
 public class Graph {
    
-   // Fields. 
+  /******************
+   * CLASS FIELD(S) *
+   ******************/
    int[][] nodes;
    int vertices = 0; 
    int edges = 0;
 
-   // Constructor.
+  /************************
+   * CLASS CONSTRUCTOR(S) *
+   ************************/ 
    public Graph(int vertices){
       nodes = new int[vertices][vertices];
       this.vertices = vertices; 
    }
 
-   // Methods.
+  /*******************
+   * CLASS METHOD(S) *
+   *******************/
+   /* Adds an edge to the matrix representation of the graph.
+      vertex1 -> Start connecting point of the edge.
+      vertex2 -> End connecting point of the edge.
    public void addEdge(int vertex1, int vertex2){
 
       // Parameter check.
@@ -36,7 +45,8 @@ public class Graph {
       return false;
    }
    
-   // DFS.
+   /* DFS traversal through the graph.
+      vertex -> starting vertex */
    public void dfs(int vertex){
  
       Stack<Integer> s = new Stack<Integer>();
@@ -74,7 +84,8 @@ public class Graph {
       return;
    }
 
-   // BFS.
+   /* BFS traversal through the graph.
+      vertex -> starting vertex */
    public void bfs(int vertex){
 
       Queue<Integer> q = new Queue<Integer>();
@@ -103,9 +114,14 @@ public class Graph {
       
       System.out.println();
       return;
-   } // End of method
+   } 
 
-   // Helper functions.
+  /********************
+   * HELPER METHOD(S) *
+   ********************/
+   /* Prints out 2d array representation of the graph.
+      Note: 1 represents an edge. 
+            0 represents no edge. */
    public void printGraph(){
 
       // Traverse 2d array.

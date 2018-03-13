@@ -3,19 +3,19 @@
 
 public class Stack<T extends Comparable<T>> {
    
-   /******************
+  /*******************
    * CLASS MEMBER(S) *
-   ******************/
+   *******************/
    Node<T> top;
    
-   /****************
-   * COSTRUCTOR(S) *
-   ****************/
+  /***********************
+   * CLASS COSTRUCTOR(S) *
+   ***********************/
    // Default class is fine for this case. 
    
-   /************
-   * METHOD(S) *
-   ************/
+  /*******************
+   * CLASS METHOD(S) *
+   *******************/
    /* Returns true if empty, false otherwise */
    public boolean isEmpty(){
       return top == null;
@@ -93,9 +93,9 @@ class Node<T> {
    T min;
    Node<T> next; 
       
-  /******************
-   * CONSTRUCTOR(S) *
-   ******************/
+  /************************
+   * CLASS CONSTRUCTOR(S) *
+   ************************/
    public Node(T data){
       this.data = data;
       this.next = null;

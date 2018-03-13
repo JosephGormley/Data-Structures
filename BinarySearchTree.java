@@ -3,20 +3,20 @@
 
 public class BinarySearchTree<T extends Comparable<T>> {
     
-   /******************
+  /*******************
    * CLASS MEMBER(S) *
    *******************/
    Node<T> root;
 
-   /*****************
-   * CONSTRUCTOR(S) *
-   *****************/
+  /************************
+   * CLASS CONSTRUCTOR(S) *
+   ************************/
    // Default constructor is fine for this case. 
    
 
-   /************
-   * METHOD(S) *
-   ************/
+  /*******************
+   * CLASS METHOD(S) *
+   *******************/
    public void addData(T data){
       
       // Create node for data.
@@ -143,9 +143,9 @@ class Node<T> {
    Node<T> leftChild;
    Node<T> rightChild;
  
-   /*****************
-   * CONSTRUCTOR(S) *
-   *****************/
+   /***********************
+   * CLASS CONSTRUCTOR(S) *
+   ************************/
    public Node(T data, Node<T> leftChild, Node<T> rightChild){
 
       this.data = data;    

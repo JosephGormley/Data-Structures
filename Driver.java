@@ -4,22 +4,21 @@ public class Driver {
 	
 	public static void main(String[] args){
 
-                System.out.println("Queue Test");
-		System.out.println("----------\n");
+                System.out.println("AVL Test");
+		System.out.println("--------\n");
 
-		// Create queue.
-                Graph g = new Graph(6);
-                g.addEdge(0,1);
-                g.addEdge(0,2);
-                g.addEdge(0,3);
-                g.addEdge(1,3);
-                g.addEdge(1,5);
-                g.addEdge(4,1);
-                g.addEdge(5,3);
-                g.addEdge(5,4);
-                g.bfs(0);
-		System.out.println("\nTest complete!\n");
-
+		// Create AVL Tree.
+                AVLTree t = new AVLTree();
+                
+                t.insert(5);
+                t.insert(1); 
+                t.insert(12);
+                t.insert(11);
+                t.insert(4); 
+                t.insert(7);
+                
+                System.out.println("Printing tree - inOrder");
+                t.printInOrder(t.root);
 	}
 
 }

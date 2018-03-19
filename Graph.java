@@ -21,7 +21,7 @@ public class Graph {
    *******************/
    /* Adds an edge to the matrix representation of the graph.
       vertex1 -> Start connecting point of the edge.
-      vertex2 -> End connecting point of the edge.
+      vertex2 -> End connecting point of the edge. */
    public void addEdge(int vertex1, int vertex2){
 
       // Parameter check.
@@ -39,10 +39,34 @@ public class Graph {
    
    // Closest route between two nodes. This question is from CTCI.
    public boolean routeBetweenVertices(int vertex1, int vertex2){
-
-  
-
-      return false;
+      // Looking for closest route, so BFS would be more appropriate than DFS. 
+      // Note: BFS uses a queue. 
+      Queue<Integer> q = new Queue<Integer>();
+      boolean[] visited = new boolean[vertices];
+      int vertex = vertex1;
+ 
+      // Enqueue and visit root.
+      q.enQueue(vertex);
+      visited[vertex] = true;
+     
+      while(!q.isEmpty()){
+         vertex = q.deQueue().data;
+         // Have we already visited vertex?
+         int i = 0; // To traverse neighbors.  
+         while(i < vertices){
+            if(nodes[vertex][i] == 1 && visited[i] == false){ 
+               if(i == vertex){
+                  return true; // There is a route between given vertices. 
+               }
+               q.enQueue(i);
+               visited[i] = true;
+            }
+            
+            i++;
+         }
+      } 
+ 
+      return false; // No route exists between given vertivces. 
    }
    
    /* DFS traversal through the graph.

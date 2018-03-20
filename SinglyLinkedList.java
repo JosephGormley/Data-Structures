@@ -31,6 +31,15 @@ public class SinglyLinkedList<T extends Comparable<T>> {
    /* Inserts an item to the end of the list */
    public void insertToEnd(T data){
 
+      // Create node to insert.
+      Node<T> n = new Node<T>(data, null);
+
+      // Empty case.
+      if(front == null){
+         front = n;
+         return;
+      }
+
       // Iterate to end of list.	
       Node<T> endNode = front;
       while(endNode.next != null){
@@ -38,7 +47,7 @@ public class SinglyLinkedList<T extends Comparable<T>> {
       }
 
       // Create Node for data and add to the list.
-      endNode.next = new Node<T>(data, null);
+      endNode.next = n;
 
    }
  

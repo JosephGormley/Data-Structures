@@ -22,7 +22,12 @@ public class Driver {
                 // Print list.
                 sl.printList();
                 System.out.println();                
+
+                // Test partition.
+                sl.front = sl.partition(sl.front, 5);      
                 
+                // Compare results.
+                sl.printList();          
 	}
 
 }

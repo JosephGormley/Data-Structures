@@ -125,10 +125,34 @@ public class SinglyLinkedList<T extends Comparable<T>> {
 
    /* Partiton node around T data. */ 
    // #4. Cracking the Coding Interview
-   public node<T> partition(T data){
+   public Node<T> partition(Node<T> front, int n){
 
+      // Set up our new list. 
+      // List will always use head as pivot node. 
+      Node<T> head = front; // head is the pivot node. 
+      Node<T> tail = front; // Only one node in list at this point. 
+      Node<T> ptr = front; // Will be used to iterate list.     
+      ptr = ptr.next; 
 
-      return null;
+      // Iterate through the remaining list.
+      while(ptr != null){
+         Node<T> next = ptr.next; 
+         if(ptr.data < n){ 
+            // Insert data to head of the list.
+            ptr.next = head;
+            head = ptr;
+         }else{
+            // Insert data to the tail of the list. 
+            tail.next = ptr;          
+            tail = ptr;
+         } 
+         ptr = next; 
+      }
+      tail.next = null;
+
+      // Return head. (May not be same one).
+      return newList;
+    
    }
 
 

@@ -23,7 +23,13 @@ public class Driver {
                 tree.printInOrder(tree.root);
                 System.out.println(); 
                 
-                   
+                tree.insert(40);
+                tree.printInOrder(tree.root);
+                System.out.println();
+
+                tree.insert(50);
+                tree.printInOrder(tree.root);
+                System.out.println();                   
 	}
 
 }

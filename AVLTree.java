@@ -18,7 +18,6 @@ public class AVLTree {
    /* Inserts data into tree while maintaining balance. */
    public TreeNode insideInsert(TreeNode tn, int data){ 
    
-
       // Base case.
       if(tn == null){  
          return new TreeNode(data);    
@@ -45,7 +44,7 @@ public class AVLTree {
       int balance = getBalance(tn);     
       
       // If unbalanced, four cases.
-      // Right right
+      // Right right.
       if(balance < -1 && data > tn.rightChild.data){
 
          System.out.println("Entering case of right right");
@@ -63,7 +62,12 @@ public class AVLTree {
          return x;
       }
       
-      
+      // @TODO
+      // Right left. 
+      // Left left.      
+      // Left right.
+
+
      
       
       return tn; // Unchanged node pointer.
@@ -103,7 +107,7 @@ public class AVLTree {
       }
 
       printInOrder(tn.leftChild);
-      System.out.println(tn.data + " with a weight of: " + tn.height);
+      System.out.println(tn.data + " with a height of: " + tn.height);
       printInOrder(tn.rightChild);
 
    }

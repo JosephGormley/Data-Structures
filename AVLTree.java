@@ -16,35 +16,56 @@ public class AVLTree {
    * CLASS METHOD(S) *
    *******************/
    /* Inserts data into tree while maintaining balance. */
-   public TreeNode insert(TreeNode tn, int data){ 
+   public TreeNode insideInsert(TreeNode tn, int data){ 
    
-      // Create Tree Node. 
-      TreeNode tn = new TreeNode(data);
 
       // Base case.
       if(tn == null){  
-         return null;    
+         return new TreeNode(data);    
       }
 
       // Recursive call.
-      if(tn.data < data){
+      if(data < tn.data){
   
-         tn.leftChild = insert(tn.leftChild, data);
+         tn.leftChild = insideInsert(tn.leftChild, data);
 
-      }else if(tn.data > data){
+      }else if(data > tn.data){
          
-         t.rightChild = insert(tn.rightChild, data);
+         tn.rightChild = insideInsert(tn.rightChild, data);
 
       }else{ // Duplicates not aloud.
-         System.out.println("Error: Duplcates not aloud.");
+         System.out.println("Error: Duplicates not aloud.");
          return tn; 
       }
 
       // Update height along recursive call. 
-      tn.height = 1 + Math.max(getHeight(tn.LeftChild)), getHeight(tn.rightChild);  
-       
-      // Is it balanced?
+      tn.height = 1 + Math.max(getHeight(tn.leftChild), getHeight(tn.rightChild));  
+ 
+      // Is node balanced? (Since this is recursive it is a bottom top approach). 
+      int balance = getBalance(tn);     
+      
+      // If unbalanced, four cases.
+      // Right right
+      if(balance < -1 && data > tn.rightChild.data){
 
+         System.out.println("Entering case of right right");
+
+         TreeNode x = tn.rightChild;
+         TreeNode y = x.leftChild;
+ 
+         x.leftChild = tn;
+         tn.rightChild = y;
+
+         // Update heights. Starting at old root. 
+         tn.height = Math.max(getHeight(tn.leftChild), getHeight(tn.rightChild)) + 1;
+         x.height = Math.max(getHeight(x.leftChild), getHeight(x.rightChild)) + 1;         
+          
+         return x;
+      }
+      
+      
+     
+      
       return tn; // Unchanged node pointer.
    }
 
@@ -53,7 +74,17 @@ public class AVLTree {
   /********************
    * HELPER METHOD(S) *
    ********************/
-   /* A Helper method to retrieve height given a TreeNode. */
+   /* Helper method to retrieve balance on a given TreeNode */
+   private int getBalance(TreeNode tn){
+   
+      if(tn == null){
+         return 0;
+      }
+
+      return getHeight(tn.leftChild) - getHeight(tn.rightChild);
+   }
+
+   /* Helper method to retrieve height given a TreeNode. */
    private int getHeight(TreeNode tn){
 
       if(tn == null){
@@ -72,7 +103,7 @@ public class AVLTree {
       }
 
       printInOrder(tn.leftChild);
-      System.out.println(tn.data + " with a weight of: " + tn.weight);
+      System.out.println(tn.data + " with a weight of: " + tn.height);
       printInOrder(tn.rightChild);
 
    }
@@ -80,7 +111,12 @@ public class AVLTree {
   /*********************
    * WRAPPED METHOD(S) *
    *********************/
+   /* Wrapper class for insert() */
+   public void insert(int data){
+ 
+      root = insideInsert(root, data);
 
+   }
 }
 
 class TreeNode {

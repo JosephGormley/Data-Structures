@@ -4,30 +4,26 @@ public class Driver {
 	
 	public static void main(String[] args){
 
-                System.out.println("LinkedList Test");
-		System.out.println("---------------\n");
+                System.out.println("AVL Tree Test");
+		System.out.println("-------------\n");
 
 		// Create LinkedList.
-                SinglyLinkedList<Integer> sl = new SinglyLinkedList<Integer>();
+                AVLTree tree = new AVLTree();
                 
                 // Insert elements.
-                sl.insertToEnd(3);
-                sl.insertToEnd(5);
-                sl.insertToEnd(8);
-                sl.insertToEnd(5);
-                sl.insertToEnd(10);
-                sl.insertToEnd(2);
-                sl.insertToEnd(1);
- 
-                // Print list.
-                sl.printList();
-                System.out.println();                
-
-                // Test partition.
-                sl.front = sl.partition(sl.front, 5);      
+                tree.insert(10);
+                tree.printInOrder(tree.root);
+                System.out.println();
+  
+                tree.insert(20);
+                tree.printInOrder(tree.root);
+                System.out.println(); 
+         
+                tree.insert(30);
+                tree.printInOrder(tree.root);
+                System.out.println(); 
                 
-                // Compare results.
-                sl.printList();          
+                   
 	}
 
 }

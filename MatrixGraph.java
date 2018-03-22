@@ -1,5 +1,5 @@
 // This is a graph represented as a Matrix. 
-public class Graph {
+public class MatrixGraph {
    
   /******************
    * CLASS FIELD(S) *

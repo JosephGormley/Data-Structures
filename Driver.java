@@ -15,21 +15,14 @@ public class Driver {
                 tree.printInOrder(tree.root);
                 System.out.println();
   
-                tree.insert(40);
+                tree.insert(60);
                 tree.printInOrder(tree.root);
                 System.out.println(); 
          
-                tree.insert(30);
+                tree.insert(55);
                 tree.printInOrder(tree.root);
                 System.out.println(); 
-                
-                tree.insert(20);
-                tree.printInOrder(tree.root);
-                System.out.println();
-
-                tree.insert(10);
-                tree.printInOrder(tree.root);
-                System.out.println();                   
+                   
 	}
 
 }

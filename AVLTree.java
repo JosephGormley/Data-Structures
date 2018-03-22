@@ -40,7 +40,7 @@ public class AVLTree {
       int balance = getBalance(tn);     
       
       // If unbalanced, four cases.
-      // Left left. 
+      // Right right. 
       /*        o
                / \
               n   o
@@ -48,11 +48,12 @@ public class AVLTree {
                 n   o 
                    / \
                   n   n          */                             
-      if(balance > 1 && data < tn.leftChild.data){
-         return rightRotation(tn); 
+      if(balance < -1 && data > tn.rightChild.data){
+         System.out.println("Right right."); 
+         return leftRotation(tn); 
       }
       
-      // Right right.
+      // Left left.
       /*            o
                    / \
                   o   n
@@ -60,8 +61,9 @@ public class AVLTree {
                 o   n         
                / \            
               n   n              */ 
-      if(balance < -1 && data > tn.rightChild.data){
-         return leftRotation(tn);
+      if(balance > 1 && data < tn.leftChild.data){
+         System.out.println("Left left.");
+         return rightRotation(tn);
       }
       
       // Left right. 
@@ -73,6 +75,7 @@ public class AVLTree {
                  / \           
                 n   n              */
       if(balance > 1 && data > tn.leftChild.data){
+         System.out.println("Left right,");
          tn.leftChild = leftRotation(tn.leftChild);
          return rightRotation(tn);
       }
@@ -86,6 +89,7 @@ public class AVLTree {
               / \
              n   n                */
       if(balance < -1 && data < tn.rightChild.data){
+         System.out.println("Right left.");
          tn.rightChild = rightRotation(tn.rightChild); 
          return leftRotation(tn);
       }
@@ -96,6 +100,7 @@ public class AVLTree {
   /********************
    * HELPER METHOD(S) *
    ********************/
+   /* Helper method to assist insert(). */
    public TreeNode leftRotation(TreeNode tn){
       
       TreeNode x = tn.rightChild;
@@ -109,10 +114,10 @@ public class AVLTree {
       tn.height = Math.max(getHeight(tn.leftChild), getHeight(tn.rightChild)) + 1;
       x.height = Math.max(getHeight(x.leftChild), getHeight(x.rightChild)) + 1;
 
-      return tn;
-
+      return x;
    }                             
 
+   /* Helper method to assist insert(). */
    public TreeNode rightRotation(TreeNode tn){
 
       TreeNode x = tn.leftChild;
@@ -126,7 +131,7 @@ public class AVLTree {
       tn.height = Math.max(getHeight(tn.leftChild), getHeight(tn.rightChild)) + 1; 
       x.height = Math.max(getHeight(x.leftChild), getHeight(x.rightChild)) + 1;     
       
-      return tn;
+      return x;
    }
 
    /* Helper method to retrieve balance on a given TreeNode */
@@ -147,10 +152,9 @@ public class AVLTree {
       }
 
       return tn.height;
-
    }
 
-   /* Prints the AVL tree in a inOrder traversal. */
+   /* Prints the AVL tree in inOrder. */
    public void printInOrder(TreeNode tn){ 
 
       if(tn == null){
@@ -160,17 +164,17 @@ public class AVLTree {
       printInOrder(tn.leftChild);
       System.out.println(tn.data + " with a height of: " + tn.height);
       printInOrder(tn.rightChild);
-
+      return;
    }
 
   /*********************
    * WRAPPED METHOD(S) *
    *********************/
-   /* Wrapper class for insert() */
+   /* Wrapper method for insert() */
    public void insert(int data){
  
       root = insideInsert(root, data);
-
+      return;
    }
 }
 

@@ -25,14 +25,10 @@ public class AVLTree {
 
       // Recursive call.
       if(data < tn.data){
-  
          tn.leftChild = insideInsert(tn.leftChild, data);
-
       }else if(data > tn.data){
-         
          tn.rightChild = insideInsert(tn.rightChild, data);
-
-      }else{ // Duplicates not aloud.
+      }else{ 
          System.out.println("Error: Duplicates not aloud.");
          return tn; 
       }
@@ -40,56 +36,99 @@ public class AVLTree {
       // Update height along recursive call. 
       tn.height = 1 + Math.max(getHeight(tn.leftChild), getHeight(tn.rightChild));  
  
-      // Is node balanced? (Since this is recursive it is a bottom top approach). 
+      // Is node balanced? (Since this is visually a bottom-top approach). 
       int balance = getBalance(tn);     
       
       // If unbalanced, four cases.
-      // Right right.
-      if(balance < -1 && data > tn.rightChild.data){
-
-         System.out.println("Entering case of right right");
-
-         TreeNode x = tn.rightChild;
-         TreeNode y = x.leftChild;
- 
-         x.leftChild = tn;
-         tn.rightChild = y;
-
-         // Update heights. Starting at tn. 
-         tn.height = Math.max(getHeight(tn.leftChild), getHeight(tn.rightChild)) + 1;
-         x.height = Math.max(getHeight(x.leftChild), getHeight(x.rightChild)) + 1;         
-          
-         return x;
-      }
-      
-      // Left left.      
+      // Left left. 
+      /*        o
+               / \
+              n   o
+                 / \
+                n   o 
+                   / \
+                  n   n          */                             
       if(balance > 1 && data < tn.leftChild.data){
-
-         System.out.println("Entering case of left left");
-      
-         TreeNode x = tn.leftChild;
-         TreeNode y = x.rightChild;
-
-         x.rightChild = tn;
-         tn.leftChild = y;
-     
-         // Update heights. Starting at tn.
-         tn.height = Math.max(getHeight(tn.leftChild), getHeight(tn.rightChild)) + 1;
-         x.height = Math.max(getHeight(x.leftChild), getHeight(x.rightChild)) + 1;
-
-         return x;      
+         return rightRotation(tn); 
       }
       
-      // Right left. 
-      // Left right.
-      return tn; // Unchanged node pointer.
-   }
+      // Right right.
+      /*            o
+                   / \
+                  o   n
+                 / \ 
+                o   n         
+               / \            
+              n   n              */ 
+      if(balance < -1 && data > tn.rightChild.data){
+         return leftRotation(tn);
+      }
+      
+      // Left right. 
+      /*         o
+                / \
+               o   n
+              / \
+             n    o           
+                 / \           
+                n   n              */
+      if(balance > 1 && data > tn.leftChild.data){
+         tn.leftChild = leftRotation(tn.leftChild);
+         return rightRotation(tn);
+      }
 
-   
+      // Right left.
+      /*       o
+              / \
+             n   o
+                / \
+               o   n
+              / \
+             n   n                */
+      if(balance < -1 && data < tn.rightChild.data){
+         tn.rightChild = rightRotation(tn.rightChild); 
+         return leftRotation(tn);
+      }
+
+      return tn;
+   }
 
   /********************
    * HELPER METHOD(S) *
    ********************/
+   public TreeNode leftRotation(TreeNode tn){
+      
+      TreeNode x = tn.rightChild;
+      TreeNode y = x.leftChild; 
+
+      // Rotate left. 
+      x.leftChild = tn;
+      tn.rightChild = y; 
+
+      // Update heights (x height is dependent on tn height).
+      tn.height = Math.max(getHeight(tn.leftChild), getHeight(tn.rightChild)) + 1;
+      x.height = Math.max(getHeight(x.leftChild), getHeight(x.rightChild)) + 1;
+
+      return tn;
+
+   }                             
+
+   public TreeNode rightRotation(TreeNode tn){
+
+      TreeNode x = tn.leftChild;
+      TreeNode y = x.rightChild;
+
+      // Rotate right. 
+      x.rightChild = tn;
+      tn.leftChild = y; 
+
+      // Update heights (x height is dependent on tn height). 
+      tn.height = Math.max(getHeight(tn.leftChild), getHeight(tn.rightChild)) + 1; 
+      x.height = Math.max(getHeight(x.leftChild), getHeight(x.rightChild)) + 1;     
+      
+      return tn;
+   }
+
    /* Helper method to retrieve balance on a given TreeNode */
    private int getBalance(TreeNode tn){
    

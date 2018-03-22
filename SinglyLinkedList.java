@@ -5,17 +5,19 @@ import java.util.HashSet;
 
 public class SinglyLinkedList<T extends Comparable<T>> {
 
-  /*******************
-   * CLASS MEMBER(S) *
-   *******************/ 
+  /******************
+   * CLASS FIELD(S) *
+   ******************/ 
    Node<T> front; // Will represent first node in list. 
-
+   int size; // Number of elements in the list. 
 
   /************************
    * CLASS CONSTRUCTOR(S) *
    ************************/
-   // Default constructor is fine for this class.
-
+   public SinglyLinkedList(){
+      front = null;
+      size = 0;
+   }
 
   /*******************
    * CLASS METHOD(S) *
@@ -25,7 +27,7 @@ public class SinglyLinkedList<T extends Comparable<T>> {
 
       // Create Node for data. 
       front = new Node<T>(data, front);
-
+      size++;
    }
 
    /* Inserts an item to the end of the list */
@@ -48,9 +50,17 @@ public class SinglyLinkedList<T extends Comparable<T>> {
 
       // Create Node for data and add to the list.
       endNode.next = n;
-
+      size++;
    }
+   
+   // @TODO: JOE. 
+   /* Retrieves ith element in the list */
+   public T get(int i){
+
  
+      return null; // For compiling reasons. 
+   }
+   
    /* Deletes first occurrence of data in list */
    public void delete(T data){
 
@@ -78,7 +88,8 @@ public class SinglyLinkedList<T extends Comparable<T>> {
 
 	 prev = toDelete;
       }
-
+      
+      size--;
    }
         
    /* Deletes ALL occurences of data in list. */
@@ -93,6 +104,7 @@ public class SinglyLinkedList<T extends Comparable<T>> {
             hs.add(curr.data);
          }else{ // This data is a duplicate and should be deleted.
             prev.next = prev.next.next;
+            size--;
          }
          prev = curr;     
       }

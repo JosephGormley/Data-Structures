@@ -55,21 +55,33 @@ public class AVLTree {
          x.leftChild = tn;
          tn.rightChild = y;
 
-         // Update heights. Starting at old root. 
+         // Update heights. Starting at tn. 
          tn.height = Math.max(getHeight(tn.leftChild), getHeight(tn.rightChild)) + 1;
          x.height = Math.max(getHeight(x.leftChild), getHeight(x.rightChild)) + 1;         
           
          return x;
       }
       
-      // @TODO
-      // Right left. 
       // Left left.      
-      // Left right.
+      if(balance > 1 && data < tn.leftChild.data){
 
-
-     
+         System.out.println("Entering case of left left");
       
+         TreeNode x = tn.leftChild;
+         TreeNode y = x.rightChild;
+
+         x.rightChild = tn;
+         tn.leftChild = y;
+     
+         // Update heights. Starting at tn.
+         tn.height = Math.max(getHeight(tn.leftChild), getHeight(tn.rightChild)) + 1;
+         x.height = Math.max(getHeight(x.leftChild), getHeight(x.rightChild)) + 1;
+
+         return x;      
+      }
+      
+      // Right left. 
+      // Left right.
       return tn; // Unchanged node pointer.
    }
 

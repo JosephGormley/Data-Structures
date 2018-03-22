@@ -11,11 +11,11 @@ public class Driver {
                 AVLTree tree = new AVLTree();
                 
                 // Insert elements.
-                tree.insert(10);
+                tree.insert(50);
                 tree.printInOrder(tree.root);
                 System.out.println();
   
-                tree.insert(20);
+                tree.insert(40);
                 tree.printInOrder(tree.root);
                 System.out.println(); 
          
@@ -23,11 +23,11 @@ public class Driver {
                 tree.printInOrder(tree.root);
                 System.out.println(); 
                 
-                tree.insert(40);
+                tree.insert(20);
                 tree.printInOrder(tree.root);
                 System.out.println();
 
-                tree.insert(50);
+                tree.insert(10);
                 tree.printInOrder(tree.root);
                 System.out.println();                   
 	}

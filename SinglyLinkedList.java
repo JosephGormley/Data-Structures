@@ -39,6 +39,7 @@ public class SinglyLinkedList<T extends Comparable<T>> {
       // Empty case.
       if(front == null){
          front = n;
+         size++;
          return;
       }
 
@@ -52,13 +53,38 @@ public class SinglyLinkedList<T extends Comparable<T>> {
       endNode.next = n;
       size++;
    }
-   
-   // @TODO: JOE. 
+    
    /* Retrieves ith element in the list */
    public T get(int i){
+   
+      int itemNumber = 1;
 
+      // Edge case - Empty list. 
+      if(front == null){
+         System.out.println("get() - list is empty.");
+         return null; 
+      }
+
+      // Edge case - i > size of list. 
+      if(i > size || i < 1){
+         System.out.println("get() - i is less than or greater than the size of the list: '" + size + "'");
+         return null;
+      }
+       
+      // Traverse list to ith item. 
+      for(Node<T> n = front; n != null; n = n.next){
+         // Reached item i.
+         if(itemNumber == i){ 
+            return n.data; 
+         }
+         
+         itemNumber++;
+      }
  
-      return null; // For compiling reasons. 
+      // Should never be reached. 
+      // For compilier reasons. 
+      return null;
+      
    }
    
    /* Deletes first occurrence of data in list */
@@ -185,7 +211,7 @@ public class SinglyLinkedList<T extends Comparable<T>> {
 
       // Iterate list
       for(Node<T> toPrint = front; toPrint != null; toPrint = toPrint.next){
-         System.out.println(toPrint.data);
+         System.out.print(toPrint.data + "->");
       }
 
       return;

@@ -8,20 +8,22 @@ public class Driver {
 		System.out.println("-------------\n");
 
 		// Create LinkedList.
-                AVLTree tree = new AVLTree();
+                SinglyLinkedList<Integer>  sll = new SinglyLinkedList<Integer>();                
                 
                 // Insert elements.
-                tree.insert(50);
-                tree.printInOrder(tree.root);
+                /* sll.insertToEnd(50);
+                sll.printList();
                 System.out.println();
   
-                tree.insert(60);
-                tree.printInOrder(tree.root);
+                sll.insertToEnd(60);
+                sll.printList();
                 System.out.println(); 
          
-                tree.insert(55);
-                tree.printInOrder(tree.root);
+                sll.insertToEnd(70);
+                sll.printList();
                 System.out.println(); 
+                */
+                System.out.println("4 item in list is: " + sll.get(4));
                    
 	}
 

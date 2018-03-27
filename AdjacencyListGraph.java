@@ -49,10 +49,48 @@ public class AdjacencyListGraph {
    ********************/
    public void dfs(int vertex){
    
-      //Stack<Integer> s = new Stack<Integer>();
-       
-      //s.pop(vertex);
-       
+      Stack s = new Stack();
+      char[] visited = new char[vertices];
+      
+      // Pop / Visted given vertex.   
+      int v = vertex;
+      s.push(v);
+      visited[v] = 'V';
+      System.out.print(v);     
+      while(!s.isEmpty()){
+
+         // Iterate through vertex's neighbors (in ascending order). 
+         for(int i = 0; i < graph[v].getSize(); i++){
+           if(visited[graph[v].get(i)] == 'V'){
+              ;
+           }else{
+              v = graph[v].get(i);
+              s.push(v);
+              visited[v] = 'V';
+              System.out.print(v);
+              i = 0;
+           }
+         }
+
+         System.out.println();
+         System.out.println("Popping " + s.peek());
+         s.pop();
+         System.out.println("Setting v to " + s.peek());
+         v = s.peek();
+     }
+ 
+     System.out.println();
+     return;
+   }
+
+   public void printSizes(){
+   
+      // Iterate through array.
+      for(int i = 0; i < vertices; i++){
+         System.out.print(graph[i].getSize());
+      }
+
+      return;
    }
 
 }

@@ -7,7 +7,7 @@ public class CircularLinkedList {
   /******************
    * CLASS FIELD(S) *
    ******************/
-   int size;
+   private int size;
    Node rear; 
 
   /************************
@@ -15,6 +15,10 @@ public class CircularLinkedList {
    ************************/ 
    // Default constructor is fine for this class. 
 
+  /*************************
+   * GETTER(S) / SETTER(S) *
+   *************************/
+   public int getSize(){ return size; }
 
   /*******************
    * CLASS METHOD(S) *
@@ -54,6 +58,7 @@ public class CircularLinkedList {
          prev.next = n;
       }
       n.next = curr;
+      size++;
 
       // Changing rear is dependent on location of data. 
       if(data > rear.data){
@@ -64,6 +69,31 @@ public class CircularLinkedList {
       return rear;
    }
 
+   public int get(int index){
+
+      // Edge case - index is higher or lower than limits of list size. 
+      if(index < 0 || index >= size){
+         System.out.println("get() - 'i' is out of bounds.");
+         return -1;
+      }
+
+      int ithIndex = 0; 
+      Node curr = rear.next;
+      
+      // Traverse to index i.       
+      do {
+
+         if(ithIndex == index){ // We've arrived to ith index. 
+            break;
+         }
+
+         curr = curr.next;
+         ithIndex++;
+      }while(curr != rear.next);
+       
+      return curr.data;
+
+   }  
   /********************
    * HELPER METHOD(S) *
    ********************/

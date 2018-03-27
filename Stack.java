@@ -47,30 +47,20 @@ public class Stack{
    }  
       
    /* Takes out and returns top of stack */
-   public Node pop(){
+   public void pop(){
       
      if(isEmpty()){
-        return null;
+        return;
      }
-    
-     Node tmp = top;
-     top = top.next;    
    
-     return tmp;
-     
+     top = top.next;
+     return;     
    }
     
-   public int stackMin(){
-   
-      return top.min;
-
-   }
+   public int stackMin(){ return top == null? -1 : top.min; }
 
 
-   public int peek(){
-  
-      return top.data;
-   }
+   public int peek(){ return top == null? -1 : top.data; }
       
   /**********************
    * HELPER FUNCTION(S) *

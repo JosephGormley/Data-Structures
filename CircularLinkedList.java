@@ -19,27 +19,49 @@ public class CircularLinkedList {
   /*******************
    * CLASS METHOD(S) *
    *******************/
-   public Node insertInside(int data){
+   public Node sortedInsertInside(int data){
       
       // Create new node for data.
       Node n = new Node(data);
 
       // Edge case - empty list. 
       if(rear == null){
-         System.out.println("insertInside() - Empty Case");
-         n.next = n;
-         return n;
+         // Add n. 
+         rear = n;
+         // Must point to itself.
+         rear.next = rear;
+         size++;
+         return rear;
       }
 
-      Node front;
-      // Add to the end of the list.
-      front = rear.next; 
-      rear.next = n;
-      n.next = front;  
-      rear = rear.next;
-      size++;
+      // Find location to insert data by traversing list.  
+      Node curr = rear.next;
+      Node prev = null; 
+      do{
+         if(data <= curr.data){ // This is the location! Insert here.   
+            break; // Break loop and insert data.             
+         }else{ // Wrong location, check next. 
+            prev = curr;  
+            curr = curr.next;
+         }
+      }while(curr != rear.next);
+
+      // Insertion
+      // Note: If prev is null, data goes to front.  
+      if(prev == null){
+         curr.next = n;
+      }else{
+         prev.next = n;
+      }
+      n.next = curr;
+
+      // Changing rear is dependent on location of data. 
+      if(data > rear.data){
+         rear = rear.next;
+      } 
  
-      return null;
+      // Return rear for case that rear changed. 
+      return rear;
    }
 
   /********************
@@ -55,16 +77,17 @@ public class CircularLinkedList {
 
       Node curr = rear.next;
       do{
-         System.out.println(curr.data + "->");
+         System.out.print(curr.data + "->");
          curr = curr.next;
       }while(curr != rear.next);
 
+      System.out.println();
    }
 
   /******************
    * WRAPPER METHOD *
    ******************/
-   public void insert(int data){ rear = insertInside(data); }
+   public void sortedInsert(int data){ rear = sortedInsertInside(data); }
  
 
 // End of class

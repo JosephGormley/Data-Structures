@@ -38,7 +38,8 @@ public class AdjacencyListGraph {
       System.out.println("Inserting edge " + vertex2 + " in graph[" + vertex1 + "]");
    
       // Add given edge to the graph representation. 
-      graph[vertex1].insert(vertex2);
+      graph[vertex1].sortedInsert(vertex2);
+      System.out.print("graph[" + vertex1 + "]: ");
       graph[vertex1].printList();
       return; 
    }
@@ -52,10 +53,6 @@ public class AdjacencyListGraph {
        
       //s.pop(vertex);
        
-   }
-
-   public void printEdges(){
-   
    }
 
 }

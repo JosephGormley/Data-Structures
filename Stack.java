@@ -1,12 +1,12 @@
 /* Author: Joseph Gormley
    Date:   03-02-18 */
 
-public class Stack<T extends Comparable<T>> {
+public class Stack{
    
   /*******************
    * CLASS MEMBER(S) *
    *******************/
-   Node<T> top;
+   Node top;
    
   /***********************
    * CLASS COSTRUCTOR(S) *
@@ -22,10 +22,10 @@ public class Stack<T extends Comparable<T>> {
    }
    
    /* Push data on to the top of the stack */
-   public Node<T>  push(T data){
+   public Node push(int data){
       
       // Creat node with given data. 
-      Node<T> n = new Node<T>(data);
+      Node n = new Node(data);
       
       // Add node to the top of the stack.
       n.next = top;
@@ -33,7 +33,7 @@ public class Stack<T extends Comparable<T>> {
       
       // Update min if necessary.
       if(top.next != null){ // If not the only Node in the list.
-         if(top.data.compareTo(top.next.min) > 0){
+         if(top.data < top.next.min){
             top.min = top.next.min;
          }else{
             top.min = data;
@@ -47,29 +47,29 @@ public class Stack<T extends Comparable<T>> {
    }  
       
    /* Takes out and returns top of stack */
-   public Node<T> pop(){
+   public Node pop(){
       
      if(isEmpty()){
         return null;
      }
     
-     Node<T> tmp = top;
+     Node tmp = top;
      top = top.next;    
    
      return tmp;
      
    }
     
-   public T stackMin(){
+   public int stackMin(){
    
       return top.min;
-   
+
    }
 
 
-   public Node<T> peek(){
+   public int peek(){
   
-      return top;
+      return top.data;
    }
       
   /**********************
@@ -78,28 +78,28 @@ public class Stack<T extends Comparable<T>> {
    public void printStack(){
    
       // Traverse stack.
-      for(Node<T> current = top; current != null; current = current.next){
+      for(Node current = top; current != null; current = current.next){
          System.out.println(current.data);
       }
    }
 }
 
-class Node<T> {
+class Node {
   
   /*******************
    * CLASS MEMBER(S) *
    *******************/
-   T data;
-   T min;
-   Node<T> next; 
+   int data;
+   int min;
+   Node next; 
       
   /************************
    * CLASS CONSTRUCTOR(S) *
    ************************/
-   public Node(T data){
+   public Node(int data){
       this.data = data;
       this.next = null;
-      min = null;
+      min = -1;
    }
 
 }

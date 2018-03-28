@@ -4,8 +4,7 @@ public class Driver {
 	
 	public static void main(String[] args){
 
-                System.out.println("Adjacency Graph Test");
-		System.out.println("-------------\n");
+                System.out.println("Adjacency Graph Test: ");
               
 		// Create Adjacency list Graph.
                 AdjacencyListGraph alg = new AdjacencyListGraph(8);;
@@ -16,7 +15,7 @@ public class Driver {
                 alg.addEdge(0, 1);
                 alg.addEdge(0, 3);
                 alg.addEdge(0, 4);
-                
+
                 alg.addEdge(1, 3);
  
                 alg.addEdge(2, 0);
@@ -33,14 +32,8 @@ public class Driver {
  
                 alg.addEdge(6, 4);
                 alg.addEdge(6, 5);
-                 
-                System.out.println("SIZE CHECK");
-                alg.printSizes();
- 
-                System.out.println();         
-                System.out.println("DFS!");
-                System.out.println();
-
+                
+                System.out.print("DFS: ");
                 alg.dfs(0);
                /* 
   

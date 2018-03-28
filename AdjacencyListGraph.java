@@ -34,13 +34,9 @@ public class AdjacencyListGraph {
       vertex1 -> Start connecting point of the edge.
       vertex2 -> End connecting point of the edge. */
    public void addEdge(int vertex1, int vertex2){
-
-      System.out.println("Inserting edge " + vertex2 + " in graph[" + vertex1 + "]");
    
       // Add given edge to the graph representation. 
       graph[vertex1].sortedInsert(vertex2);
-      System.out.print("graph[" + vertex1 + "]: ");
-      graph[vertex1].printList();
       return; 
    }
  
@@ -59,19 +55,20 @@ public class AdjacencyListGraph {
       System.out.print(v);     
       while(!s.isEmpty()){
          
-         // Iterate through vertex's neighbors (in ascending order). 
-         System.out.print("Iterating through " + v + ": ");
-         for(int i = 0; i < graph[v].getSize(); i++){
-           System.out.print(graph[v].get(i));
+         // Iterate through vertex's neighbors (in ascending order).
+         int i = 0;
+         while(i < graph[v].getSize()){ 
            if(visited[graph[v].get(i)] != 'V'){
               v = graph[v].get(i);
               s.push(v);
               visited[v] = 'V';
-              //System.out.print(v);
-              i = 0;
+              System.out.print(v);
+              i = 0; // Check new v's neighbors. 
+           }else{
+              i++; // Not an unvisited island? Try next neighbor.  
            }
          }
-         System.out.println("Popping out: " + s.peek());
+
          s.pop();
          if(s != null){ v = s.peek(); }     
      }
@@ -86,8 +83,23 @@ public class AdjacencyListGraph {
       for(int i = 0; i < vertices; i++){
          System.out.print(graph[i].getSize());
       }
-
+      System.out.println();
       return;
    }
 
-}
+   public void printLists(){
+   
+      // Iterate rows of array.
+      for(int row = 0; row < graph.length; row++){
+         // Iterate lists in each row.
+         System.out.print("graph[" + row + "]: ");
+         for(int col = 0; col < graph[row].getSize(); col++){
+            System.out.print(graph[row].get(col) + "->");
+         }
+
+         System.out.println();
+      }
+
+   } // End of method. 
+
+} // End of class.

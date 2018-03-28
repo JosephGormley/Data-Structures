@@ -31,17 +31,6 @@ public class Stack{
       n.next = top;
       top = n;
       
-      // Update min if necessary.
-      if(top.next != null){ // If not the only Node in the list.
-         if(top.data < top.next.min){
-            top.min = top.next.min;
-         }else{
-            top.min = data;
-         }
-      }else{ // Only Node in the list.
-         top.min = top.data;
-      }
-      
       return top;
       
    }  

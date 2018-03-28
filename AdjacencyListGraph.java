@@ -52,31 +52,28 @@ public class AdjacencyListGraph {
       Stack s = new Stack();
       char[] visited = new char[vertices];
       
-      // Pop / Visted given vertex.   
-      int v = vertex;
+      // Pop / Visted given vertex.
+      int v = vertex;   
       s.push(v);
       visited[v] = 'V';
       System.out.print(v);     
       while(!s.isEmpty()){
-
+         
          // Iterate through vertex's neighbors (in ascending order). 
+         System.out.print("Iterating through " + v + ": ");
          for(int i = 0; i < graph[v].getSize(); i++){
-           if(visited[graph[v].get(i)] == 'V'){
-              ;
-           }else{
+           System.out.print(graph[v].get(i));
+           if(visited[graph[v].get(i)] != 'V'){
               v = graph[v].get(i);
               s.push(v);
               visited[v] = 'V';
-              System.out.print(v);
+              //System.out.print(v);
               i = 0;
            }
          }
-
-         System.out.println();
-         System.out.println("Popping " + s.peek());
+         System.out.println("Popping out: " + s.peek());
          s.pop();
-         System.out.println("Setting v to " + s.peek());
-         v = s.peek();
+         if(s != null){ v = s.peek(); }     
      }
  
      System.out.println();

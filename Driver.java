@@ -33,8 +33,8 @@ public class Driver {
                 alg.addEdge(6, 4);
                 alg.addEdge(6, 5);
                 
-                System.out.print("DFS: ");
-                alg.dfs(0);
+                System.out.print("BFS: ");
+                alg.bfs(0);
                /* 
   
                CircularLinkedList cll = new CircularLinkedList();

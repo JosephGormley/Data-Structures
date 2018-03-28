@@ -40,9 +40,10 @@ public class AdjacencyListGraph {
       return; 
    }
  
-  /********************
-   * HELPER METHOD(S) *
-   ********************/
+  /***********************
+   * TRAVERSAL METHOD(S) *
+   ***********************/
+   /* DFS traversal iteratively. */
    public void dfs(int vertex){
    
       Stack s = new Stack();
@@ -76,7 +77,17 @@ public class AdjacencyListGraph {
      System.out.println();
      return;
    }
+ 
+   /* BFS traversal recursively. */
+   public void bfs(int vertex){
 
+
+ 
+   }
+
+  /********************
+   * HELPER METHOD(S) *
+   ********************/
    public void printSizes(){
    
       // Iterate through array.

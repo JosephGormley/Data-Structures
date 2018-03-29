@@ -18,6 +18,11 @@ public class SinglyLinkedList<T extends Comparable<T>> {
       front = null;
       size = 0;
    }
+ 
+  /*************************
+   * GETTER(S) / SETTER(S) *
+   *************************
+   public size getSize(){ return size; }
 
   /*******************
    * CLASS METHOD(S) *
@@ -247,7 +252,6 @@ class Node<T> {
    *******************/
    T data; 
    Node<T> next; 
-
 
   /************************
    * CLASS CONSTRUCTOR(S) *

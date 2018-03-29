@@ -21,8 +21,8 @@ public class SinglyLinkedList<T extends Comparable<T>> {
  
   /*************************
    * GETTER(S) / SETTER(S) *
-   *************************
-   public size getSize(){ return size; }
+   *************************/
+   public int getSize(){ return size; }
 
   /*******************
    * CLASS METHOD(S) *

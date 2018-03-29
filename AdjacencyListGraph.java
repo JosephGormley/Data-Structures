@@ -78,11 +78,26 @@ public class AdjacencyListGraph {
      return;
    }
  
-   /* BFS traversal recursively. */
+   /* BFS traversal iteratively. */
    public void bfs(int vertex){
 
+      Queue q = new Queue();
+      char[] visited = new char[vertices];
 
- 
+      v = vertex;
+      q.enQueue(v);
+      visited[v] = 'V';
+      System.out.println(v);
+      while(!q.isEmpty){
+         // Iterate through v's neighbors.
+         while(i < graph[v].getSize()){
+            q.enQueue(v);
+            visited[v] = 'V';
+            System.out.println(v);
+         }
+        
+         v = deQueue();
+      }
    }
 
   /********************

@@ -1,21 +1,19 @@
 /* Author: Joseph Gormley
    Date: March 22nd, 2018 */
 
-import java.util.LinkedList; 
-
 public class AdjacencyListGraph {
    
   /******************
    * CLASS FIELD(S) *
    ******************/
-   CircularLinkedList[] graph; 
+   SinglyLinkedList<Integer>[] graph; 
    int vertices; 
 
   /************************
    * CLASS CONSTRUCTOR(S) *
    ************************/
    public AdjacencyListGraph(int vertices){
-      graph = new CircularLinkedList[vertices];
+      graph = new SinglyLinkedList<Integer>[vertices];
       this.vertices = vertices; 
    }
 
@@ -26,7 +24,7 @@ public class AdjacencyListGraph {
     
       // Fill graph with empty Circular Linked Lists. 
       for(int i = 0; i < vertices; i++){
-         graph[i] = new CircularLinkedList();
+         graph[i] = new SinglyLinkedList<Integer>();
       }
    }
 
@@ -36,14 +34,19 @@ public class AdjacencyListGraph {
    public void addEdge(int vertex1, int vertex2){
    
       // Add given edge to the graph representation. 
-      graph[vertex1].sortedInsert(vertex2);
+      graph[vertex1].insertToEnd(vertex2);
       return; 
    }
- 
+
+   public boolean pathBetweenVertices(int vertex1, int vertex2){
+
+      return false;
+   }
+             
   /***********************
    * TRAVERSAL METHOD(S) *
    ***********************/
-   /* DFS traversal iteratively. */
+   /* DFS traversal iteratively. */  /*
    public void dfs(int vertex){
    
       Stack s = new Stack();
@@ -66,7 +69,7 @@ public class AdjacencyListGraph {
               System.out.print(v);
               i = 0; // Check new v's neighbors. 
            }else{
-              i++; // Not an unvisited island? Try next neighbor.  
+              i++; // Not an unvisited vertice? Try next neighbor.  
            }
          }
 
@@ -77,26 +80,30 @@ public class AdjacencyListGraph {
      System.out.println();
      return;
    }
- 
+         */
    /* BFS traversal iteratively. */
    public void bfs(int vertex){
 
-      Queue q = new Queue();
+      Queue<Integer> q = new Queue<Integer>();
       char[] visited = new char[vertices];
 
-      v = vertex;
+      int v = vertex;
       q.enQueue(v);
       visited[v] = 'V';
       System.out.println(v);
-      while(!q.isEmpty){
+      while(!q.isEmpty()){
+         v = q.deQueue();
+         int i = 0; 
          // Iterate through v's neighbors.
          while(i < graph[v].getSize()){
-            q.enQueue(v);
-            visited[v] = 'V';
-            System.out.println(v);
+            if(visited[Integer.parseInt(graph[v].get(i) + "" )] != 'V'){
+               q.enQueue(v);
+               visited[v] = 'V';
+               System.out.println(v);
+            }
+            i++; // Not an unvisited vertice? Try next neighbor. 
          }
-        
-         v = deQueue();
+   
       }
    }
 

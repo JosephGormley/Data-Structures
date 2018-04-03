@@ -62,7 +62,7 @@ public class SinglyLinkedList {
    /* Retrieves ith element in the list */
    public int get(int i){
    
-      int itemNumber = 1;
+      int itemNumber = 0;
 
       // Edge case - Empty list. 
       if(front == null){
@@ -71,8 +71,8 @@ public class SinglyLinkedList {
       }
 
       // Edge case - i > size of list. 
-      if(i > size || i < 1){
-         System.out.println("get() - i is less than or greater than the size of the list: '" + size + "'");
+      if(i >= size || i < 0){
+         System.out.println("get() - " + i + " is less than or greater than the size of the list: '" + size + "'");
          return -1;
       }
        
@@ -85,7 +85,8 @@ public class SinglyLinkedList {
          
          itemNumber++;
       }
- 
+
+      System.out.println("SHOULD NOT BE HERE!"); 
       // Should never be reached. 
       // For compilier reasons. 
       return -1;

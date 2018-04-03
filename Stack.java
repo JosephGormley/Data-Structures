@@ -1,12 +1,12 @@
 /* Author: Joseph Gormley
    Date:   03-02-18 */
 
-public class Stack{
+public class Stack<T extends Comparable<T>>{
    
   /*******************
    * CLASS MEMBER(S) *
    *******************/
-   Node top;
+   NodeGen<T> top;
    
   /***********************
    * CLASS COSTRUCTOR(S) *
@@ -22,10 +22,10 @@ public class Stack{
    }
    
    /* Push data on to the top of the stack */
-   public Node push(int data){
+   public NodeGen<T> push(T data){
       
       // Creat node with given data. 
-      Node n = new Node(data);
+      NodeGen<T> n = new NodeGen<T>(data);
       
       // Add node to the top of the stack.
       n.next = top;
@@ -49,7 +49,7 @@ public class Stack{
    public int stackMin(){ return top == null? -1 : top.min; }
 
 
-   public int peek(){ return top == null? -1 : top.data; }
+   public T peek(){ return top == null? null : top.data; }
       
   /**********************
    * HELPER FUNCTION(S) *
@@ -57,25 +57,25 @@ public class Stack{
    public void printStack(){
    
       // Traverse stack.
-      for(Node current = top; current != null; current = current.next){
+      for(NodeGen<T> current = top; current != null; current = current.next){
          System.out.println(current.data);
       }
    }
 }
 
-class Node {
+class NodeGen<T> {
   
   /*******************
    * CLASS MEMBER(S) *
    *******************/
-   int data;
+   T data;
    int min;
-   Node next; 
+   NodeGen<T> next; 
       
   /************************
    * CLASS CONSTRUCTOR(S) *
    ************************/
-   public Node(int data){
+   public NodeGen(T data){
       this.data = data;
       this.next = null;
       min = -1;

@@ -6,14 +6,14 @@ public class AdjacencyListGraph {
   /******************
    * CLASS FIELD(S) *
    ******************/
-   SinglyLinkedList<Integer>[] graph; 
+   SinglyLinkedList[] graph; 
    int vertices; 
 
   /************************
    * CLASS CONSTRUCTOR(S) *
    ************************/
    public AdjacencyListGraph(int vertices){
-      graph = new SinglyLinkedList<Integer>[vertices];
+      graph = new SinglyLinkedList[vertices];
       this.vertices = vertices; 
    }
 
@@ -24,7 +24,7 @@ public class AdjacencyListGraph {
     
       // Fill graph with empty Circular Linked Lists. 
       for(int i = 0; i < vertices; i++){
-         graph[i] = new SinglyLinkedList<Integer>();
+         graph[i] = new SinglyLinkedList();
       }
    }
 
@@ -46,19 +46,19 @@ public class AdjacencyListGraph {
   /***********************
    * TRAVERSAL METHOD(S) *
    ***********************/
-   /* DFS traversal iteratively. */  /*
+   /* DFS traversal iteratively. */  
    public void dfs(int vertex){
    
-      Stack s = new Stack();
+      Stack<Integer> s = new Stack<Integer>();
       char[] visited = new char[vertices];
       
       // Pop / Visted given vertex.
       int v = vertex;   
       s.push(v);
       visited[v] = 'V';
-      System.out.print(v);     
-      while(!s.isEmpty()){
-         
+      System.out.print(v);
+      while(!s.isEmpty()){;
+
          // Iterate through vertex's neighbors (in ascending order).
          int i = 0;
          while(i < graph[v].getSize()){ 
@@ -72,15 +72,17 @@ public class AdjacencyListGraph {
               i++; // Not an unvisited vertice? Try next neighbor.  
            }
          }
+ 
+         // All neighbors have visisted. 
 
          s.pop();
-         if(s != null){ v = s.peek(); }     
+         if(s.peek() != null){ v = s.peek(); }     
      }
  
      System.out.println();
      return;
    }
-         */
+         
    /* BFS traversal iteratively. */
    public void bfs(int vertex){
 
@@ -126,11 +128,7 @@ public class AdjacencyListGraph {
       for(int row = 0; row < graph.length; row++){
          // Iterate lists in each row.
          System.out.print("graph[" + row + "]: ");
-         for(int col = 0; col < graph[row].getSize(); col++){
-            System.out.print(graph[row].get(col) + "->");
-         }
-
-         System.out.println();
+         graph[row].printList();
       }
 
    } // End of method. 

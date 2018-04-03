@@ -3,18 +3,18 @@
 
 import java.util.HashSet;
 
-public class SinglyLinkedList {
+public class SinglyLinkedListGen<T extends Comparable<T>> {
 
   /******************
    * CLASS FIELD(S) *
    ******************/ 
-   Node front; // Will represent first node in list. 
+   Node<T> front; // Will represent first node in list. 
    int size; // Number of elements in the list. 
 
   /************************
    * CLASS CONSTRUCTOR(S) *
    ************************/
-   public SinglyLinkedList(){
+   public SinglyLinkedListGen(){
       front = null;
       size = 0;
    }
@@ -28,18 +28,18 @@ public class SinglyLinkedList {
    * CLASS METHOD(S) *
    *******************/
    /* Inserts an item to the front of the list */
-   public void insertToFront(int data){
+   public void insertToFront(T data){
 
       // Create Node for data. 
-      front = new Node(data, front);
+      front = new Node<T>(data, front);
       size++;
    }
 
    /* Inserts an item to the end of the list */
-   public void insertToEnd(int data){
+   public void insertToEnd(T data){
 
       // Create node to insert.
-      Node n = new Node(data, null);
+      Node<T> n = new Node<T>(data, null);
 
       // Empty case.
       if(front == null){
@@ -49,7 +49,7 @@ public class SinglyLinkedList {
       }
 
       // Iterate to end of list.	
-      Node endNode = front;
+      Node<T> endNode = front;
       while(endNode.next != null){
          endNode = endNode.next;
       }
@@ -60,24 +60,24 @@ public class SinglyLinkedList {
    }
     
    /* Retrieves ith element in the list */
-   public int get(int i){
+   public T get(int i){
    
       int itemNumber = 1;
 
       // Edge case - Empty list. 
       if(front == null){
          System.out.println("get() - list is empty.");
-         return -1; 
+         return null; 
       }
 
       // Edge case - i > size of list. 
       if(i > size || i < 1){
          System.out.println("get() - i is less than or greater than the size of the list: '" + size + "'");
-         return -1;
+         return null;
       }
        
       // Traverse list to ith item. 
-      for(Node n = front; n != null; n = n.next){
+      for(Node<T> n = front; n != null; n = n.next){
          // Reached item i.
          if(itemNumber == i){ 
             return n.data; 
@@ -88,15 +88,15 @@ public class SinglyLinkedList {
  
       // Should never be reached. 
       // For compilier reasons. 
-      return -1;
+      return null;
       
    }
    
    /* Deletes first occurrence of data in list */
-   public void delete(int data){
+   public void delete(T data){
 
       // Check to see if first item is first occurrence of data. 
-      if(front.data == data){
+      if(front.data.compareTo(data) == 0){
          if(front.next == null){
             // Delete only item in list. 
 	    front = null;
@@ -107,11 +107,11 @@ public class SinglyLinkedList {
          return;
       }  
 
-      Node prev = front;
+      Node<T> prev = front;
 
       // Search remaining of list for first occurrence of data.
-      for(Node toDelete = front.next; toDelete != null; toDelete = toDelete.next){
-	 if(toDelete.data == data){
+      for(Node<T> toDelete = front.next; toDelete != null; toDelete = toDelete.next){
+	 if(toDelete.data.compareTo(data) == 0){
 	    // Delete this node.
 	    prev.next = prev.next.next;
 	    return;
@@ -127,10 +127,10 @@ public class SinglyLinkedList {
    // #1. Cracking the Coding Interview  
    public void removeDups(){
         
-      HashSet<Integer> hs = new HashSet<Integer>(); // Used to store list for efficiency. 
+      HashSet<T> hs = new HashSet<T>(); // Used to store list for efficiency. 
  
-      Node prev = null;
-      for(Node curr = front; curr != null; curr = curr.next){
+      Node<T> prev = null;
+      for(Node<T> curr = front; curr != null; curr = curr.next){
          if(!hs.contains(curr.data)){ // Add to HashSet. 
             hs.add(curr.data);
          }else{ // This data is a duplicate and should be deleted.
@@ -144,12 +144,12 @@ public class SinglyLinkedList {
 
     /* Return kth to last item in the list. */
     // #2. Cracking the Coding Interview
-    public Node returnKthToLast(int k){  
+    public Node<T> returnKthToLast(int k){  
       
        int listSize = 0;
 
        // Get size of linked list. 
-       for(Node curr = front; curr != null; curr = curr.next){
+       for(Node<T> curr = front; curr != null; curr = curr.next){
           listSize++;  
        }
  
@@ -159,12 +159,12 @@ public class SinglyLinkedList {
 
     /* Delete a given note (must be a missle node) given only a pointer to it */
     // #3. Cracking the Coding Interview
-    public void  deleteMiddleNode(Node toDelete){
+    public void  deleteMiddleNode(Node<T> toDelete){
 
        // Do not have to worry about edeg cases due to nature of the method. 
   
        // Collect data from node in front;
-       int nodeData = toDelete.next.data;
+       T nodeData = toDelete.next.data;
 
        // Place data in node given.
        toDelete.data = nodeData;
@@ -177,19 +177,19 @@ public class SinglyLinkedList {
 
    /* Partiton node around T data. */ 
    // #4. Cracking the Coding Interview
-   public Node partition(Node front, int n){
+   public Node<T> partition(Node<T> front, T n){
 
       // Set up our new list. 
       // List will always use head as pivot node. 
-      Node head = front; // head is the pivot node. 
-      Node tail = front; // Only one node in list at this point. 
-      Node ptr = front; // Will be used to iterate list.     
+      Node<T> head = front; // head is the pivot node. 
+      Node<T> tail = front; // Only one node in list at this point. 
+      Node<T> ptr = front; // Will be used to iterate list.     
       ptr = ptr.next; 
 
       // Iterate through the remaining list.
       while(ptr != null){
-         Node next = ptr.next; 
-         if(ptr.data < n){ 
+         Node<T> next = ptr.next; 
+         if(ptr.data.compareTo(n) < 0){ 
             // Insert data to head of the list.
             ptr.next = head;
             head = ptr;
@@ -215,18 +215,16 @@ public class SinglyLinkedList {
    public void printList(){
 
       // Iterate list
-      for(Node toPrint = front; toPrint != null; toPrint = toPrint.next){
+      for(Node<T> toPrint = front; toPrint != null; toPrint = toPrint.next){
          System.out.print(toPrint.data + "->");
       }
-      
-      System.out.println();
 
       return;
    }
 
 
    /* Recursive call to delete iterate items in list */
-   public Node returnIndex(Node current, int numberOfItem){
+   public Node<T> returnIndex(Node<T> current, int numberOfItem){
       
       // Edge Case 
       if(numberOfItem == 1){
@@ -247,18 +245,18 @@ public class SinglyLinkedList {
  
 
 /* This class will store data and a pointer to the next data */
-class Node {
+class Node<T> {
 
   /*******************
    * CLASS MEMBER(S) *
    *******************/
-   int data; 
-   Node next; 
+   T data; 
+   Node<T> next; 
 
   /************************
    * CLASS CONSTRUCTOR(S) *
    ************************/
-   public Node(int data, Node next){
+   public Node(T data, Node<T> next){
       this.data = data;
       this.next = next;
    }

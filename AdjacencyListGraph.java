@@ -58,7 +58,6 @@ public class AdjacencyListGraph {
       visited[v] = 'V';
       System.out.print(v);
       while(!s.isEmpty()){;
-
          // Iterate through vertex's neighbors (in ascending order).
          int i = 0;
          while(i < graph[v].getSize()){ 
@@ -88,25 +87,29 @@ public class AdjacencyListGraph {
 
       Queue<Integer> q = new Queue<Integer>();
       char[] visited = new char[vertices];
-
+      
       int v = vertex;
       q.enQueue(v);
       visited[v] = 'V';
-      System.out.println(v);
+      System.out.print(v);
       while(!q.isEmpty()){
          v = q.deQueue();
-         int i = 0; 
+         int i = 0;
          // Iterate through v's neighbors.
          while(i < graph[v].getSize()){
-            if(visited[Integer.parseInt(graph[v].get(i) + "" )] != 'V'){
-               q.enQueue(v);
-               visited[v] = 'V';
-               System.out.println(v);
+            // Have we been here before? 
+            if(visited[graph[v].get(i)] != 'V'){
+               q.enQueue(graph[v].get(i));
+               visited[graph[v].get(i)] = 'V';
+               System.out.print(graph[v].get(i));
             }
-            i++; // Not an unvisited vertice? Try next neighbor. 
+               i++; // Not an unvisited vertice? Try next neighbor. 
          }
    
       }
+
+      System.out.println();
+      return;
    }
 
   /********************

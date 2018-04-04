@@ -31,8 +31,11 @@ public class Driver {
 
                 alg.addEdge(7, 5);
 		alg.addEdge(7, 6);
+                
+                //System.out.println(alg.graph[7].get(0));
 
-                alg.dfs(3);
+                //alg.printLists();
+                alg.bfs(3);
 	}
 
 }

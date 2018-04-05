@@ -12,14 +12,14 @@ public class Driver {
                 MinHeap heap = new MinHeap(6);
  
                 heap.insert(3);
-                heap.insert(1);
+                heap.insert(2);
 
                 System.out.println();
  
                 heap.insert(8);
                 heap.insert(5);
                 heap.insert(9);
-                heap.insert(6);
+                heap.insert(1);
                 heap.printHeap();
 
 	}

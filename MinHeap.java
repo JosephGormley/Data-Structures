@@ -22,14 +22,30 @@ public class MinHeap {
        // Insert element at the end of heap.
        heap[size] = element;
 
+       int i = size;
        // Swap if necessary. 
-       if(size != 0 && heap[parent(size)] > element){ swap(parent(size), size); }
+       while(i != 0 && heap[parent(i)] > element ){
+           bubbleUp(parent(i), i); 
+           i = parent(i);
+       }
 
        // Update size.
        size++;
         
        return;
     } 
+
+    /* public int removeMin(){
+
+        int ret = heap[0];
+        heap[0] = heap[size];
+
+        // Swap if necessary.
+        while(
+
+        }
+        
+   }     */   
 
    /********************
     * HELPER METHOD(S) *
@@ -40,7 +56,7 @@ public class MinHeap {
 
     private int parent(int i){ return (i - 1) / 2; }
  
-    private void swap(int indexA, int indexB){ 
+    private void bubbleUp(int indexA, int indexB){ 
 
         int tmp = heap[indexA];
 

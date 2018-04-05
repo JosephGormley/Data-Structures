@@ -19,7 +19,11 @@ public class Driver {
                 heap.insert(8);
                 heap.insert(5);
                 heap.insert(9);
-                heap.insert(1);
+                heap.printHeap();
+                
+                System.out.println();
+                System.out.println("The min was: " + heap.removeMin());
+                System.out.println();
                 heap.printHeap();
 
 	}

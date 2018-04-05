@@ -1,3 +1,8 @@
+/*  Author: Joseph Gormley
+    Date: 4/4/2018 */
+
+import java.lang.Math;
+
 public class MinHeap {
     
    /******************
@@ -25,7 +30,7 @@ public class MinHeap {
        int i = size;
        // Swap if necessary. 
        while(i != 0 && heap[parent(i)] > element ){
-           bubbleUp(parent(i), i); 
+           swap(parent(i), i); 
            i = parent(i);
        }
 
@@ -35,17 +40,44 @@ public class MinHeap {
        return;
     } 
 
-    /* public int removeMin(){
+    public int removeMin(){
 
         int ret = heap[0];
-        heap[0] = heap[size];
-
-        // Swap if necessary.
-        while(
-
-        }
+        heap[0] = heap[size - 1];
+        heap[size - 1] = 0; // Set back to default. 
         
-   }     */   
+        int index = 0;
+        while(heap[index] > Math.min(heap[leftChild(index)], heap[rightChild(index)])){
+            
+            // Bubble down, swap with min. 
+            if(heap[leftChild(index)] < heap[rightChild(index)]){
+                 swap(index, leftChild(index)); 
+                 index = leftChild(index);
+            }else{
+                 // TODO @ Myself: At bottom of bubbledown (at the leafs), it values an empty rightChild at 0 even if 0 is not in list. 
+                 // Problem resides in here. 
+                 if(rightChild(index) >= size){
+                     swap(index, leftChild(index));
+                 index = leftChild(index);
+                 }else{
+                     swap(index, rightChild(index));
+                     index = rightChild(index);
+                 }
+            }
+
+
+            // Are we at a leaf? 
+            if(leftChild(index) >= size){
+               break;
+            }
+        }
+
+        // Update size.
+        size--;
+
+        return ret;
+        
+   }       
 
    /********************
     * HELPER METHOD(S) *
@@ -56,7 +88,7 @@ public class MinHeap {
 
     private int parent(int i){ return (i - 1) / 2; }
  
-    private void bubbleUp(int indexA, int indexB){ 
+    private void swap(int indexA, int indexB){ 
 
         int tmp = heap[indexA];
 
@@ -66,6 +98,15 @@ public class MinHeap {
 
          return; 
 
+    }
+
+    private void bubbleDown(int indexA, int indexB){
+ 
+        int tmp = heap[indexA];
+
+
+
+        return;
     }
 
     public void printHeap(){

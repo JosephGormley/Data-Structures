@@ -44,36 +44,10 @@ public class MinHeap {
 
         int ret = heap[0];
         heap[0] = heap[size - 1];
-        heap[size - 1] = 0; // Set back to default. 
-        
-        int index = 0;
-        while(heap[index] > Math.min(heap[leftChild(index)], heap[rightChild(index)])){
-            
-            // Bubble down, swap with min. 
-            if(heap[leftChild(index)] < heap[rightChild(index)]){
-                 swap(index, leftChild(index)); 
-                 index = leftChild(index);
-            }else{
-                 // TODO @ Myself: At bottom of bubbledown (at the leafs), it values an empty rightChild at 0 even if 0 is not in list. 
-                 // Problem resides in here. 
-                 if(rightChild(index) >= size){
-                     swap(index, leftChild(index));
-                 index = leftChild(index);
-                 }else{
-                     swap(index, rightChild(index));
-                     index = rightChild(index);
-                 }
-            }
-
-
-            // Are we at a leaf? 
-            if(leftChild(index) >= size){
-               break;
-            }
-        }
-
-        // Update size.
+        heap[size - 1] = 0; 
         size--;
+
+        removeMinWrapped(ret);
 
         return ret;
         
@@ -116,6 +90,30 @@ public class MinHeap {
         }
 
     }
+
+   /***********************
+    * WRAPPED FUNCTION(S) *
+    ***********************/
+    public void removeMinWrapped(int index){
+
+        int minIndex = index;
+        if(leftChild(index) < size && heap[index] > heap[leftChild(index)]){
+           minIndex = leftChild(index);
+        }
+      
+        if(rightChild(index) < size && heap[rightChild(index)] < heap[minIndex]){
+           minIndex = rightChild(index);
+        }
+      
+        if(minIndex == index){
+          swap(index, minIndex);
+          removeMinWrapped(minIndex); 
+        }
+      
+        return;
+    }
+
+    
 }
 
 

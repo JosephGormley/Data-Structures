@@ -47,7 +47,7 @@ public class MinHeap {
         heap[size - 1] = 0; 
         size--;
 
-        removeMinWrapped(ret);
+        removeMinWrapped(0);
 
         return ret;
         
@@ -105,7 +105,7 @@ public class MinHeap {
            minIndex = rightChild(index);
         }
       
-        if(minIndex == index){
+        if(minIndex != index){
           swap(index, minIndex);
           removeMinWrapped(minIndex); 
         }

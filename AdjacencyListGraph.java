@@ -46,6 +46,14 @@ public class AdjacencyListGraph {
   /***********************
    * TRAVERSAL METHOD(S) *
    ***********************/
+   /* Dijsktra's shortest path. 
+   public int[] dijsktra(int vertex){
+
+
+
+      return null;
+   }
+
    /* DFS traversal iteratively. */  
    public void dfs(int vertex){
    
